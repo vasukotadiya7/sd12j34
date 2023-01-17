@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "13942306115",
+    "firebase_url": "https://park-1d48c-default-rtdb.firebaseio.com",
+    "project_id": "park-1d48c",
+    "storage_bucket": "park-1d48c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13942306115:android:a0f3c7886c082454ab2bf6",
+        "android_client_info": {
+          "package_name": "com.example.authentication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "13942306115-pbeh665p75tvkfmbq6m864irt4a4p53j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDT8fwAh0yFIWumX1nZdwTIuqDstOlJxQM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "13942306115-pbeh665p75tvkfmbq6m864irt4a4p53j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

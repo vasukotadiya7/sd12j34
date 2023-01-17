@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="homepage" type="id" />
+    <item name="sector16" type="id" />
+    <item name="sector24" type="id" />
+    <item name="sector8" type="id" />
+    <item name="sector14" type="id" />
+    <item name="sector30" type="id" />
+    <item name="sector2" type="id" />
+    <item name="sector7" type="id" />
+    <item name="sector10" type="id" />
+    <item name="sector21" type="id" />
+    <item name="sector20" type="id" />
+    <item name="book" type="id" />
+    <item name="payment" type="id" />
+    <item name="help" type="id" />
+    <item name="map" type="id" />
+    <item name="mapp" type="id" />
+</resources>

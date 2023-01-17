@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawer_layout"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    tools:context="com.example.authentication.HomePage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+<androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/design_default_color_primary"
+            android:id="@+id/toolbar"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:elevation="4dp"/>
+<!--        <FrameLayout-->
+<!--            android:id="@+id/fragment_container"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+
+<!--            <Button-->
+<!--                android:id="@+id/button3"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Button" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/button4"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Button" />-->
+<!--        </FrameLayout>-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="317dp"
+            android:layout_height="35dp"
+            android:text=""
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:layout_marginLeft="38dp"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="139dp"
+            android:layout_marginTop="30dp"
+            android:layout_height="147dp"
+            app:srcCompat="@drawable/logo"
+            android:layout_marginLeft="140dp"/>
+
+
+        <Button
+            android:id="@+id/mapp"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+            android:backgroundTint="#C896AC"
+            android:rotationX="4"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="50dp"
+            android:text="TRACKING" />
+
+        <Button
+            android:id="@+id/book"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+            android:backgroundTint="#C896AC"
+            android:layout_marginTop="-100dp"
+            android:layout_marginLeft="210dp"
+            android:text="BOOKING" />
+
+        <Button
+            android:id="@+id/payment"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+            android:backgroundTint="#C896AC"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            android:text="PAYMENT" />
+
+        <Button
+            android:id="@+id/help"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+            android:backgroundTint="#C896AC"
+            android:layout_marginTop="-100dp"
+            android:layout_marginLeft="210dp"
+            android:text="HELP" />
+
+    </LinearLayout>
+
+<com.google.android.material.navigation.NavigationView
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:id="@+id/nav_view"
+    app:headerLayout="@layout/nav_header"
+    app:menu="@menu/drawer_menu" />
+</androidx.drawerlayout.widget.DrawerLayout>
