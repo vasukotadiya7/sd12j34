@@ -2,6 +2,7 @@ package com.example.authentication;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.app.PendingIntent.FLAG_IMMUTABLE;
 import static com.example.authentication.BookSlot1.Area;
 import static com.example.authentication.payment.UPI_PAYMENT;
 
@@ -9,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -61,8 +63,8 @@ public class SlotBooking extends AppCompatActivity implements PaymentStatusListe
     private Button btConfrom;
     public TextView tvFN,tvEM,tvArea,tvTime;
     public String area,time,fname,email;
-    private static final int PERMISSION_REQUEST_CODE = 10;
-//    private static final int PERMISSION_REQUEST_CODE = 200;
+//    private static final int PERMISSION_REQUEST_CODE = 10;
+    private static final int PERMISSION_REQUEST_CODE = 200;
     private static final String TAG= String.valueOf(Calendar.DATE)+" "+String.valueOf(Calendar.MINUTE);
     static int pdfHeight=1080;
     static int pdfWidth=720;
@@ -339,11 +341,11 @@ public class SlotBooking extends AppCompatActivity implements PaymentStatusListe
             @Override
             public void onSuccess(Void unused) {
 //                Toast.makeText(SlotBooking.this, "Slot Booked Successfully", Toast.LENGTH_LONG).show();
+                Notify("Slot Booked Successfully","To Download Recipt Please Visit History Section");
 
                 if(checkPermission()){
                     generatePDF(fname,email,area,time,trnid,pnp);
 
-                    Notify("Slot Booked Successfully","To Download Recipt Please Visit History Section");
                 }
                 else {
                     requestPermission();
@@ -362,12 +364,14 @@ public class SlotBooking extends AppCompatActivity implements PaymentStatusListe
                 .setContentText(msgtext)
                 .setAutoCancel(true);
 
-//        Intent intent=new Intent(SlotBooking.this,AdminPage.class);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        intent.putExtra("message1",msgtitle);
-//        PendingIntent pendingIntent= PendingIntent.getActivity(SlotBooking.this,0,intent,
-//                PendingIntent.FLAG_UPDATE_CURRENT);
-//        builder.setContentIntent(pendingIntent);
+        Intent intent=new Intent(SlotBooking.this,History.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("message1",msgtitle);
+        PendingIntent pendingIntent= null;
+            pendingIntent = PendingIntent.getActivity(SlotBooking.this,0,intent,
+                    PendingIntent.FLAG_UPDATE_CURRENT | FLAG_IMMUTABLE);
+
+        builder.setContentIntent(pendingIntent);
         NotificationManagerCompat managerCompat=NotificationManagerCompat.from(SlotBooking.this);
         managerCompat.notify(1,builder.build());
     }
@@ -443,8 +447,8 @@ public class SlotBooking extends AppCompatActivity implements PaymentStatusListe
         document.finishPage(page);
         createFile();
     }
-    private static final int CREATE_FILE=1;
-    private void createFile() {
+    public static final int CREATE_FILE=1;
+    private  void createFile() {
         Intent intent=new Intent(Intent.ACTION_CREATE_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("application/pdf");
@@ -456,7 +460,7 @@ public class SlotBooking extends AppCompatActivity implements PaymentStatusListe
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent resultData) {
+    protected  void onActivityResult(int requestCode, int resultCode, @Nullable Intent resultData) {
         super.onActivityResult(requestCode, resultCode, resultData);
         if(requestCode==CREATE_FILE
                     && resultCode== Activity.RESULT_OK){

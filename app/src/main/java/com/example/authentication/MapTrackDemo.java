@@ -74,8 +74,8 @@ public class MapTrackDemo extends AppCompatActivity {
                 }
                 else{
                     ActivityCompat.requestPermissions(MapTrackDemo.this,new String[]{
-                            Manifest.permission.ACCESS_FINE_LOCATION
-                            ,Manifest.permission.ACCESS_COARSE_LOCATION}
+                                    Manifest.permission.ACCESS_FINE_LOCATION
+                                    ,Manifest.permission.ACCESS_COARSE_LOCATION}
                             ,100 );
                 }
             }
@@ -102,6 +102,7 @@ public class MapTrackDemo extends AppCompatActivity {
 
 
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

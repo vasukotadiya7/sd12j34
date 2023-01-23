@@ -25,12 +25,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.044" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+
+    <Button
         android:id="@+id/bt_track1"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
+        android:layout_width="76dp"
+        android:layout_height="41dp"
         android:backgroundTint="@color/white"
-        android:src="@drawable/ic_location"
+        android:text="Current Location"
+        android:textColor="@color/purple_700"
         android:textSize="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +40,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.063" />
-
     <AutoCompleteTextView
         android:id="@+id/et_Destination"
         android:layout_width="350dp"

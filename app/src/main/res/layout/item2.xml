@@ -117,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="120dp"
                 android:backgroundTint="@color/white"
-                android:id="@+id/download"
+                android:id="@+id/btn_download"
                 android:src="@drawable/ic_baseline_download_24" />
         </LinearLayout>
 

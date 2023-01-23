@@ -1,8 +1,14 @@
 package com.example.authentication;
 
+import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -15,6 +21,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,6 +32,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity implements  View.OnClickListener{
     FirebaseFirestore fstore;
+    private static final int PERMISSION_REQUEST_CODE = 10;
     public static int[][] capacity ={{0,0,0,0,0,0,0,0,0,0,0},
             {0,10,13,15,20,16,16,19,0,0,11},{0,20,11,16,18,10,0,14,14,12,10},{0,0,11,15,16,18,20,17,17,10,0},
             {0,15,20,13,17,17,11,0,11,10,20},{0,11,0,15,16,15,15,20,10,11,12},{0,19,14,0,11,0,13,13,11,10,18},
@@ -62,10 +71,33 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         mAuth=FirebaseAuth.getInstance();
         forgotPassword = (TextView) findViewById(R.id.forgotpassword);
         forgotPassword.setOnClickListener(this);
+        requestPermission();
+        if(checkPermission()){
 
-
+        }
+        else {
+            requestPermission();
+        }
     };
 
+    private boolean checkPermission() {
+        int permission1= ContextCompat.checkSelfPermission(getApplicationContext(),WRITE_EXTERNAL_STORAGE);
+        int permission2= ContextCompat.checkSelfPermission(getApplicationContext(),READ_EXTERNAL_STORAGE);
+        int permission3= ContextCompat.checkSelfPermission(getApplicationContext(),ACCESS_FINE_LOCATION);
+        int permission4= ContextCompat.checkSelfPermission(getApplicationContext(),ACCESS_COARSE_LOCATION);
+
+
+
+        return permission1== PackageManager.PERMISSION_GRANTED&&
+                permission2==PackageManager.PERMISSION_GRANTED&&
+                permission3==PackageManager.PERMISSION_GRANTED&&
+                permission4==PackageManager.PERMISSION_GRANTED;
+
+    }
+    private void requestPermission() {
+        ActivityCompat.requestPermissions(this,new String[]{WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE,ACCESS_FINE_LOCATION
+                                                                    ,ACCESS_COARSE_LOCATION},PERMISSION_REQUEST_CODE);
+    }
     @Override
     public void onBackPressed() {
 

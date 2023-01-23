@@ -33,6 +33,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener,
     FirebaseFirestore fstore;
     String userID;
     public static String email;
+    public static String fullname;
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -67,6 +68,8 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener,
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
                 email=documentSnapshot.getString("email");
+                fullname=documentSnapshot.getString("fullname");
+
                 tvName.setText("Hello "+documentSnapshot.getString("fullname"));
             }
         });
