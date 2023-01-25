@@ -117,7 +117,7 @@ public class MapTrackDemo extends AppCompatActivity {
     }
 
     @SuppressLint("MissingPermission")
-    private void getCurrentLocation() {
+    private void getCurrentLocation(){
         LocationManager locationManager=(LocationManager) getSystemService(
                 Context.LOCATION_SERVICE);
         if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
