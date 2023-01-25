@@ -8,6 +8,7 @@ import static com.example.authentication.payment.UPI_PAYMENT;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -342,7 +343,7 @@ public class SlotBooking extends AppCompatActivity implements PaymentStatusListe
             public void onSuccess(Void unused) {
 //                Toast.makeText(SlotBooking.this, "Slot Booked Successfully", Toast.LENGTH_LONG).show();
                 Notify("Slot Booked Successfully","To Download Recipt Please Visit History Section");
-
+                createAlert();
                 if(checkPermission()){
                     generatePDF(fname,email,area,time,trnid,pnp);
 
@@ -357,7 +358,20 @@ public class SlotBooking extends AppCompatActivity implements PaymentStatusListe
 
     }
 
-    private void Notify(String msgtitle, String msgtext) {
+    private void createAlert() {
+
+        Intent intent=new Intent(this,ReminderBroadcast.class);
+        PendingIntent pendingIntent1=PendingIntent.getBroadcast(SlotBooking.this,0,intent,0);
+
+        AlarmManager alarmManager=(AlarmManager) getSystemService(ALARM_SERVICE);
+
+        long timeAtBttonClick =System.currentTimeMillis();
+        long tensec=1000*10;
+        alarmManager.set(AlarmManager.RTC_WAKEUP,
+                timeAtBttonClick+tensec,pendingIntent1);
+    }
+
+    private  void Notify(String msgtitle, String msgtext) {
         NotificationCompat.Builder builder=new NotificationCompat.Builder(SlotBooking.this,"My Notification")
                 .setSmallIcon(R.drawable.logo1)
                 .setContentTitle(msgtitle)
