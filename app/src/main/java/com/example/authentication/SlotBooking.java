@@ -3,6 +3,7 @@ package com.example.authentication;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.app.PendingIntent.FLAG_IMMUTABLE;
+import static android.app.PendingIntent.FLAG_MUTABLE;
 import static com.example.authentication.BookSlot1.Area;
 import static com.example.authentication.payment.UPI_PAYMENT;
 
@@ -84,8 +85,11 @@ public class SlotBooking extends AppCompatActivity implements PaymentStatusListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+            CharSequence name="ReminderChanel";
+            String description="Send Reminder for slot";
             NotificationChannel channel=new NotificationChannel("My Notification","nofity",
                     NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription(description);
             NotificationManager manager=getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel);
         }
@@ -361,14 +365,14 @@ public class SlotBooking extends AppCompatActivity implements PaymentStatusListe
     private void createAlert() {
 
         Intent intent=new Intent(this,ReminderBroadcast.class);
-        PendingIntent pendingIntent1=PendingIntent.getBroadcast(SlotBooking.this,0,intent,0);
+        PendingIntent pendingIntent1=PendingIntent.getBroadcast(SlotBooking.this,0,intent,FLAG_MUTABLE);
 
         AlarmManager alarmManager=(AlarmManager) getSystemService(ALARM_SERVICE);
 
         long timeAtBttonClick =System.currentTimeMillis();
         long tensec=1000*10;
         alarmManager.set(AlarmManager.RTC_WAKEUP,
-                timeAtBttonClick+tensec,pendingIntent1);
+                System.currentTimeMillis(),pendingIntent1);
     }
 
     private  void Notify(String msgtitle, String msgtext) {

@@ -22,7 +22,7 @@
         <activity
             android:name=".SplashScreen"
             android:exported="true"
-            android:theme="">
+            android:theme="@style/Theme.Authentication.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -147,7 +147,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <receiver android:name=".ReminderBroadcast"/>
     </application>
 
 </manifest>
