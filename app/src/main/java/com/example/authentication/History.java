@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -25,17 +23,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
 public class History extends AppCompatActivity {
-
     RecyclerView recyclerView;
-    FirebaseUser firebaseUser;
-    FirebaseAuth fAuth;
-    DatabaseReference databaseReference;
-
     ArrayList<HistoryModel> historyModelArrayList;
-    MyAdapter myAdapter;
+    RecyclerView.Adapter myAdapter;
+    FirebaseAuth fAuth;
     FirebaseFirestore firebaseFirestore;
     ProgressDialog progressDialog;
-    public String useremail,userID;
+    public static  String useremail,userID;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -80,13 +74,16 @@ public class History extends AppCompatActivity {
                             return;
                         }
                         for (DocumentChange dc:value.getDocumentChanges()){
-                            if(dc.getType()==DocumentChange.Type.ADDED){
+                            if(dc.getType()==DocumentChange.Type.ADDED  ||
+                                    dc.getType()==DocumentChange.Type.MODIFIED ||
+                                    dc.getType()==DocumentChange.Type.REMOVED ){
                                 historyModelArrayList.add(dc.getDocument().toObject(HistoryModel.class));
                             }
                             myAdapter.notifyDataSetChanged();
-                            if(progressDialog.isShowing()){
-                                progressDialog.dismiss();
-                            }
+
+                        }
+                        if(progressDialog.isShowing()){
+                            progressDialog.dismiss();
                         }
                     }
                 });

@@ -59,6 +59,9 @@ dependencies {
     implementation 'androidx.test.ext:junit:1.1.5'
     testImplementation 'org.testng:testng:6.9.6'
     testImplementation 'junit:junit:4.12'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.22'
+
+
     androidTestImplementation 'org.testng:testng:6.9.6'
 //    implementation 'com.google.android.gms:play-services-ads-lite:21.4.0'
 }

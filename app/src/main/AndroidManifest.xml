@@ -22,7 +22,7 @@
         <activity
             android:name=".SplashScreen"
             android:exported="true"
-            android:theme="@style/Theme.Authentication.NoActionBar">
+            android:theme="@style/Theme.Authentication.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

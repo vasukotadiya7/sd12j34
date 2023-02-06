@@ -29,6 +29,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener,
     private DrawerLayout drawer;
     public Button book,payment,help,mapp;
     TextView tvName;
+    public int v;
     FirebaseAuth fAuth;
     FirebaseFirestore fstore;
     String userID;
@@ -63,6 +64,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener,
         fstore= FirebaseFirestore.getInstance();
         userID=fAuth.getCurrentUser().getUid();
 
+
         DocumentReference documentReference=fstore.collection("Users").document(userID);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -70,9 +72,15 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener,
                 email=documentSnapshot.getString("email");
                 fullname=documentSnapshot.getString("fullname");
 
+//                tvName.setText("Hello "+v);
                 tvName.setText("Hello "+documentSnapshot.getString("fullname"));
             }
         });
+//        String s="1";
+//        capslot(s);
+//        Toast.makeText(this, String.valueOf(t), Toast.LENGTH_SHORT).show();
+
+
         drawer =findViewById(R.id.drawer_layout);
         NavigationView navigationView=findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -94,9 +102,17 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener,
 
     }
 
+    public void capslot(String area){
+        DocumentReference documentReference=fstore.collection("Capacity").document(area);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
+                int v= Integer.parseInt(documentSnapshot.getString(area));
+                tvName.setText("Hello "+v);
+            }
+        });
 
-
-    ;
+    }
 
     @Override
     public void onBackPressed() {

@@ -21,6 +21,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
+import android.media.AudioAttributes;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -85,11 +86,17 @@ public class SlotBooking extends AppCompatActivity implements PaymentStatusListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+            Uri custom=Uri.parse("android.resource://" + getPackageName() + "/" +R.raw.notify_sound);
+            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                    .setContentType(AudioAttributes. CONTENT_TYPE_SONIFICATION )
+                    .setUsage(AudioAttributes. USAGE_ALARM )
+                    .build() ;
             CharSequence name="ReminderChanel";
             String description="Send Reminder for slot";
             NotificationChannel channel=new NotificationChannel("My Notification","nofity",
                     NotificationManager.IMPORTANCE_DEFAULT);
             channel.setDescription(description);
+            channel.setSound(custom,audioAttributes);
             NotificationManager manager=getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel);
         }
@@ -376,11 +383,15 @@ public class SlotBooking extends AppCompatActivity implements PaymentStatusListe
     }
 
     private  void Notify(String msgtitle, String msgtext) {
-        NotificationCompat.Builder builder=new NotificationCompat.Builder(SlotBooking.this,"My Notification")
-                .setSmallIcon(R.drawable.logo1)
-                .setContentTitle(msgtitle)
-                .setContentText(msgtext)
-                .setAutoCancel(true);
+        Uri custom=Uri.parse("android.resource://" + getPackageName() + "/" +R.raw.notify_sound);
+
+//        Uri custom=Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE+"://"+getPackageName()+"/raw/notify_sound.mp3");
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(SlotBooking.this, "My Notification");
+        builder.setSmallIcon(R.drawable.logo1);
+        builder.setContentTitle(msgtitle);
+        builder.setContentText(msgtext);
+        builder.setSound(custom);
+        builder.setAutoCancel(true);
 
         Intent intent=new Intent(SlotBooking.this,History.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

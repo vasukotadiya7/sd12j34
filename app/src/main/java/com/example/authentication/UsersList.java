@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class UsersList extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<User> userArrayList;
-    Adapter adapter;
+    RecyclerView.Adapter adapter;
     FirebaseFirestore firebaseFirestore;
     ProgressDialog progressDialog;
 

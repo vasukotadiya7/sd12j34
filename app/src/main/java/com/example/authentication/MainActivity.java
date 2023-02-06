@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     public  Button button;
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
+    private LoadingDialog loadingDialog;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         fstore=FirebaseFirestore.getInstance();
         register = (TextView) findViewById(R.id.register);
         register.setOnClickListener((View.OnClickListener) this);
+
+        loadingDialog=new LoadingDialog(MainActivity.this);
 
         login = (Button) findViewById(R.id.login);
         login.setOnClickListener((View.OnClickListener) this);
@@ -79,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
             requestPermission();
         }
     };
+
 
     private boolean checkPermission() {
         int permission1= ContextCompat.checkSelfPermission(getApplicationContext(),WRITE_EXTERNAL_STORAGE);
@@ -115,6 +120,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     }
 
     public void onClick(View v){
+
             switch (v.getId()) {
                 case R.id.register:
                     startActivity(new Intent(this, RegisterUser.class));
@@ -162,8 +168,15 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
             editPassword.requestFocus();
             return;
         }
-
-        progressBar.setVisibility(View.VISIBLE);
+        loadingDialog.startLoadingDialog();
+//        Handler handler=new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                loadingDialog.dismissDialog();
+//            }
+//        },5000);
+        //progressBar.setVisibility(View.VISIBLE);
 
 
 
@@ -172,6 +185,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         //redirect to home page
+                        loadingDialog.dismissDialog();
                         startActivity(new Intent(MainActivity.this, HomePage.class));
                     } else {
                         Toast.makeText(MainActivity.this, "Failed to Login! Please check your email and password", Toast.LENGTH_LONG).show();
