@@ -4,103 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/okp"
     android:id="@+id/drawer_layout"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start"
+    tools:openDrawer=""
     tools:context="com.example.authentication.HomePage">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="ExtraText">
 
-<androidx.appcompat.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/design_default_color_primary"
-            android:id="@+id/toolbar"
+            android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            android:elevation="4dp"/>
-<!--        <FrameLayout-->
-<!--            android:id="@+id/fragment_container"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent">-->
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        <!--        <FrameLayout-->
+        <!--            android:id="@+id/fragment_container"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent">-->
 
 
-<!--            <Button-->
-<!--                android:id="@+id/button3"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Button" />-->
+        <!--            <Button-->
+        <!--                android:id="@+id/button3"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="Button" />-->
 
-<!--            <Button-->
-<!--                android:id="@+id/button4"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Button" />-->
-<!--        </FrameLayout>-->
+        <!--            <Button-->
+        <!--                android:id="@+id/button4"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="Button" />-->
+        <!--        </FrameLayout>-->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="317dp"
             android:layout_height="35dp"
-            android:text=""
+            android:layout_marginLeft="38dp"
+
             android:layout_marginTop="20dp"
+            android:text=""
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:layout_marginLeft="38dp"
             android:textSize="20dp" />
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="139dp"
-            android:layout_marginTop="30dp"
             android:layout_height="147dp"
-            app:srcCompat="@drawable/logo"
-            android:layout_marginLeft="140dp"/>
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="30dp"
+            app:srcCompat="@drawable/po" />
 
-
-        <Button
+                <Button
             android:id="@+id/mapp"
-            android:layout_width="140dp"
+            android:layout_width="139dp"
             android:layout_height="100dp"
-            android:backgroundTint="#C896AC"
-            android:rotationX="4"
-            android:layout_marginTop="80dp"
             android:layout_marginLeft="50dp"
+            android:layout_marginTop="80dp"
+            android:backgroundTint="#112FDA"
+            android:background="@drawable/shapebutton"
+            android:rotationX="4"
             android:text="TRACKING" />
+
 
         <Button
             android:id="@+id/book"
             android:layout_width="140dp"
             android:layout_height="100dp"
-            android:backgroundTint="#C896AC"
-            android:layout_marginTop="-100dp"
             android:layout_marginLeft="210dp"
+            android:layout_marginTop="-100dp"
+            android:backgroundTint="#112FDA"
+            android:background="@drawable/shapebutton"
             android:text="BOOKING" />
 
-        <Button
-            android:id="@+id/payment"
-            android:layout_width="140dp"
-            android:layout_height="100dp"
-            android:backgroundTint="#C896AC"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp"
-            android:text="PAYMENT" />
 
         <Button
             android:id="@+id/help"
-            android:layout_width="140dp"
+            android:layout_width="160dp"
             android:layout_height="100dp"
-            android:backgroundTint="#C896AC"
-            android:layout_marginTop="-100dp"
-            android:layout_marginLeft="210dp"
+            android:layout_marginStart="110dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shapebutton"
+            android:backgroundTint="#112FDA"
+            android:baselineAligned="false"
             android:text="HELP" />
 
     </LinearLayout>

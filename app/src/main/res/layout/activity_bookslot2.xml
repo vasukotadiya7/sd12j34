@@ -4,149 +4,153 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/okp"
     tools:context=".bookslot2">
 
     <Button
         android:id="@+id/slot5"
-        android:layout_width="152dp"
-        android:layout_height="72dp"
-        android:backgroundTint="#BAB5B5"
+        android:layout_width="173dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#C88181"
         android:text="1.P.M to 2.P.M."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.817" />
+        app:layout_constraintVertical_bias="0.924" />
 
     <Button
         android:id="@+id/slot7"
-        android:layout_width="152dp"
-        android:layout_height="72dp"
-        android:backgroundTint="#BAB5B5"
+        android:layout_width="173dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#C88181"
         android:text="3.P.M to 4.P.M."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.826"
+        app:layout_constraintHorizontal_bias="0.894"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.326" />
+        app:layout_constraintVertical_bias="0.448" />
 
     <Button
         android:id="@+id/slot9"
-        android:layout_width="152dp"
-        android:layout_height="72dp"
-        android:backgroundTint="#BAB5B5"
+        android:layout_width="173dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#C88181"
         android:text="5.P.M to 6.P.M."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.826"
+        app:layout_constraintHorizontal_bias="0.894"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.647" />
+        app:layout_constraintVertical_bias="0.769" />
 
     <Button
         android:id="@+id/slot8"
-        android:layout_width="152dp"
-        android:layout_height="72dp"
-        android:backgroundTint="#BAB5B5"
+        android:layout_width="173dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#C88181"
         android:text="4.P.M to 5.P.M."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.853"
+        app:layout_constraintHorizontal_bias="0.894"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.477" />
+        app:layout_constraintVertical_bias="0.6" />
 
     <Button
         android:id="@+id/slot3"
-        android:layout_width="152dp"
-        android:layout_height="72dp"
-        android:backgroundTint="#BAB5B5"
+        android:layout_width="173dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#C88181"
         android:text="11.A.M to 12.A.M."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.477" />
+        app:layout_constraintVertical_bias="0.6" />
 
     <Button
         android:id="@+id/slot4"
-        android:layout_width="152dp"
-        android:layout_height="72dp"
-        android:backgroundTint="#BAB5B5"
+        android:layout_width="173dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#C88181"
         android:text="12A.M to 1.P.M."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.647" />
+        app:layout_constraintVertical_bias="0.769" />
 
     <Button
         android:id="@+id/slot10"
-        android:layout_width="152dp"
-        android:layout_height="72dp"
-        android:backgroundTint="#BAB5B5"
+        android:layout_width="173dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#C88181"
         android:text="6.P.M to 7.P.M."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.826"
+        app:layout_constraintHorizontal_bias="0.894"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.817" />
+        app:layout_constraintVertical_bias="0.924" />
 
     <Button
-        android:id="@+id/slot1" android:layout_width="152dp"
-        android:layout_height="72dp"
-        android:backgroundTint="#BAB5B5"
+        android:id="@+id/slot1"
+        android:layout_width="173dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#C88181"
+        android:onClick="displayToast"
         android:text="9.A.M to 10.A.M."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" android:onClick="displayToast"
-        app:layout_constraintVertical_bias="0.177" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.287"
+        app:rippleColor="#D17474" />
 
     <Button
         android:id="@+id/slot2"
-        android:layout_width="152dp"
-        android:layout_height="72dp"
-        android:backgroundTint="#BAB5B5"
+        android:layout_width="173dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#C88181"
         android:text="10.A.M to 11.A.M."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.326" />
+        app:layout_constraintVertical_bias="0.448" />
 
     <Button
         android:id="@+id/slot6"
-        android:layout_width="152dp"
-        android:layout_height="72dp"
-        android:backgroundTint="#BAB5B5"
+        android:layout_width="170dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#C88181"
         android:text="2.P.M to 3P.M."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.826"
+        app:layout_constraintHorizontal_bias="0.883"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.177" />
+        app:layout_constraintVertical_bias="0.287" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="385dp"
-        android:layout_height="65dp"
+        android:layout_width="362dp"
+        android:layout_height="66dp"
         android:text="         Available slots"
         android:textColor="#100D0D"
-        android:textSize="34sp"
+        android:textSize="38sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048" />
+        app:layout_constraintVertical_bias="0.108" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

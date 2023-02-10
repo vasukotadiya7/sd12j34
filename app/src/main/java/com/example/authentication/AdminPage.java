@@ -18,8 +18,7 @@ public class AdminPage extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_page);
 
-        addSlot=findViewById(R.id.bt_add_slot);
-        addSlot.setOnClickListener(this);
+
         resetSlot=findViewById(R.id.bt_bkd_slot);
         resetSlot.setOnClickListener(this);
         changeCap=findViewById(R.id.bt_chg_cap);
@@ -32,12 +31,14 @@ public class AdminPage extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.bt_add_slot:
-                break;
+
             case R.id.bt_bkd_slot:
                 for (int i=0;i<=10;i++){
                     for (int j=0;j<=10;j++){
-                        MainActivity.booked[i][j]=0;
+                        for (int k = 0; k < 10; k++) {
+                            MainActivity.booked.get(i).get(j).set(k, 0);
+                        }
+
                     }
                 }
                 Toast.makeText(this, "All slots are reseted", Toast.LENGTH_SHORT).show();

@@ -3,68 +3,62 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/okp"
     android:layout_height="match_parent"
     tools:context=".AdminPage">
 
     <Button
         android:id="@+id/bt_users"
-        android:layout_width="130dp"
-        android:layout_height="85dp"
+        android:layout_width="330dp"
+        android:layout_height="71dp"
+        android:background="@drawable/shapebutton"
+        android:backgroundTint="#FFEB3B"
         android:text="Users"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.196"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
-
-    <Button
-        android:id="@+id/bt_add_slot"
-        android:layout_width="129dp"
-        android:layout_height="98dp"
-        android:text="Add Slot"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.872"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.249" />
+        app:layout_constraintVertical_bias="0.307" />
 
     <Button
         android:id="@+id/bt_chg_cap"
-        android:layout_width="145dp"
-        android:layout_height="96dp"
+        android:layout_width="328dp"
+        android:layout_height="71dp"
+        android:background="@drawable/shapebutton"
         android:text="Change Capacity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.214"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.453" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/bt_bkd_slot"
-        android:layout_width="148dp"
-        android:layout_height="100dp"
+        android:layout_width="322dp"
+        android:layout_height="71dp"
+        android:background="@drawable/shapebutton"
         android:text="reset booked slot"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintHorizontal_bias="0.449"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.456" />
+        app:layout_constraintVertical_bias="0.687" />
 
     <TextView
         android:id="@+id/textView7"
-        android:layout_width="235dp"
-        android:layout_height="63dp"
+        android:layout_width="263dp"
+        android:layout_height="62dp"
+        android:fontFamily="@font/capriola"
         android:text="Admin Page"
-        android:textSize="30dp"
+        android:textColor="#0B0202"
+        android:textColorHighlight="#0B0909"
+        android:textSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.732"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.079" />
+        app:layout_constraintVertical_bias="0.088" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

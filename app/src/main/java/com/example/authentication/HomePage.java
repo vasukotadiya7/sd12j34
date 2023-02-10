@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,7 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class HomePage extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
-    public Button book,payment,help,mapp;
+    public Button book,help,mapp;
     TextView tvName;
     public int v;
     FirebaseAuth fAuth;
@@ -89,15 +90,14 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener,
         toggle.syncState();
         book = (Button) findViewById(R.id.book);
         book.setOnClickListener((View.OnClickListener) this);
-        payment = (Button) findViewById(R.id.payment);
-        payment.setOnClickListener((View.OnClickListener) this);
+
 
         tvName=findViewById(R.id.tv_name);
 
 
         help = (Button) findViewById(R.id.help);
         help.setOnClickListener((View.OnClickListener) this);
-        mapp= (Button) findViewById(R.id.mapp);
+        mapp= (Button)  findViewById(R.id.mapp);
         mapp.setOnClickListener((View.OnClickListener) this);
 
     }

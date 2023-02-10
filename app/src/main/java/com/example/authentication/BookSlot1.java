@@ -1,9 +1,13 @@
 package com.example.authentication;
 
+import static com.example.authentication.AdminPage.cs;
+import static com.example.authentication.scroll.cheBook;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
-public class BookSlot1 extends AppCompatActivity implements View.OnClickListener {
+public class BookSlot1 extends AppCompatActivity  implements View.OnClickListener {
     public static int Area;
     private FirebaseUser user;
     private DatabaseReference reference;
@@ -66,47 +70,65 @@ public class BookSlot1 extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+        if(cs==1){
+            openDialog();
+        }
         switch (v.getId()){
             case R.id.sector16:
                 Area=1;
-                startActivity(new Intent(this,bookslot2.class));
+                startActivity(new Intent(this,levels.class));
                 break;
             case R.id.sector20:
                 Area=6;
-                startActivity(new Intent(this,bookslot2.class));
+                startActivity(new Intent(this,levels.class));
                 break;
             case R.id.sector24:
                 Area=2;
-                startActivity(new Intent(this,bookslot2.class));
+                startActivity(new Intent(this,levels.class));
                 break;
             case R.id.sector8:
                 Area=3;
-                startActivity(new Intent(this,bookslot2.class));
+                startActivity(new Intent(this,levels.class));
                 break;
             case R.id.sector14:
                 Area=4;
-                startActivity(new Intent(this,bookslot2.class));
+                startActivity(new Intent(this,levels.class));
                 break;
             case R.id.sector30:
                 Area=5;
-                startActivity(new Intent(this,bookslot2.class));
+                startActivity(new Intent(this,levels.class));
                 break;
             case R.id.sector2:
                 Area=7;
-                startActivity(new Intent(this,bookslot2.class));
+                startActivity(new Intent(this,levels.class));
                 break;
             case R.id.sector21:
                 Area=8;
-                startActivity(new Intent(this,bookslot2.class));
+                startActivity(new Intent(this,levels.class));
                 break;
             case R.id.sector10:
                 Area=9;
-                startActivity(new Intent(this,bookslot2.class));
+                startActivity(new Intent(this,levels.class));
                 break;
             case R.id.sector7:
                 Area=10;
-                startActivity(new Intent(this,bookslot2.class));
+                startActivity(new Intent(this,levels.class));
                 break;
 
-}}}
+}}
+
+    public void openDialog() {
+        ExampleDialog exampleDialog = new ExampleDialog();
+        exampleDialog.show(getSupportFragmentManager(), "example dialog");
+    }
+    public void applyTexts(int cap) {
+        cheBook();
+        if (cap < cheBook()) {
+            Toast.makeText(this, "Booked slot is less than new capacity", Toast.LENGTH_SHORT).show();
+        } else {
+            MainActivity.capacity.get(BookSlot1.Area).get(levels.level).set(scroll.time, cap);
+            Toast.makeText(this, "Capacity Changed successfully", Toast.LENGTH_LONG).show();
+        }
+    }
+}
 

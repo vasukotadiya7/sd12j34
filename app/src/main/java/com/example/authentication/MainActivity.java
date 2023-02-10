@@ -30,20 +30,26 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements  View.OnClickListener{
     FirebaseFirestore fstore;
     private static final int PERMISSION_REQUEST_CODE = 10;
-    public static int[][] capacity ={{0,0,0,0,0,0,0,0,0,0,0},
-            {0,10,13,15,20,16,16,19,0,0,11},{0,20,11,16,18,10,0,14,14,12,10},{0,0,11,15,16,18,20,17,17,10,0},
-            {0,15,20,13,17,17,11,0,11,10,20},{0,11,0,15,16,15,15,20,10,11,12},{0,19,14,0,11,0,13,13,11,10,18},
-            {0,14,18,17,20,0,0,13,10,14,18},{0,11,15,13,0,13,16,19,10,11,15},{0,17,13,0,11,20,13,18,14,14,13},
-            {0,16,18,13,15,10,10,14,12,13,11}};
+    //    public static int[][] capacity ={{0,0,0,0,0,0,0,0,0,0,0},
+//            {0,10,13,15,20,16,16,19,0,0,11},{0,20,11,16,18,10,0,14,14,12,10},{0,0,11,15,16,18,20,17,17,10,0},
+//            {0,15,20,13,17,17,11,0,11,10,20},{0,11,0,15,16,15,15,20,10,11,12},{0,19,14,0,11,0,13,13,11,10,18},
+//            {0,14,18,17,20,0,0,13,10,14,18},{0,11,15,13,0,13,16,19,10,11,15},{0,17,13,0,11,20,13,18,14,14,13},
+//            {0,16,18,13,15,10,10,14,12,13,11}};
+//
+//    public static int[][] booked ={{0,0,0,0,0,0,0,0,0,0,0},
+//            {0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0},
+//            {0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0},
+//            {0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0},
+//            {0,0,0,0,0,0,0,0,0,0,0}};
+    public static ArrayList<ArrayList<ArrayList<Integer>> > capacity = new ArrayList<ArrayList<ArrayList<Integer>> >();
+    public static ArrayList<ArrayList<ArrayList<Integer>> > booked = new ArrayList<ArrayList<ArrayList<Integer>>>();
 
-    public static int[][] booked ={{0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0}};
+
     private TextView register,forgotPassword;
     private EditText editEmail,editPassword;
     private Button login;
@@ -61,6 +67,35 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         fstore=FirebaseFirestore.getInstance();
         register = (TextView) findViewById(R.id.register);
         register.setOnClickListener((View.OnClickListener) this);
+        for(int i=1 ; i<=10 ; i++) {
+            ArrayList<ArrayList<Integer>> arr1 = new ArrayList<ArrayList<Integer>>();
+            for (int j = 1; j <= 4; j++) {
+
+                ArrayList<Integer>arr= new ArrayList<Integer>();
+                for (int k=1;k<=24;k++) {
+                    if(k==9 || k==2)arr.add(0);
+                    else
+                        arr.add(10);
+                }
+                arr1.add(arr);
+
+            }
+            capacity.add(arr1);
+        }
+//        capacity.get(1).get(1).get(2)=0;
+        for(int i=0 ; i<10 ; i++) {
+            ArrayList<ArrayList<Integer>> arr1 = new ArrayList<ArrayList<Integer>>();
+            for (int j = 0; j < 4; j++) {
+
+                ArrayList<Integer>arr= new ArrayList<Integer>();
+                for (int k=0;k<24;k++) {
+                    arr.add(0);
+                }
+                arr1.add(arr);
+
+            }
+            booked.add(arr1);
+        }
 
         loadingDialog=new LoadingDialog(MainActivity.this);
 
@@ -101,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     }
     private void requestPermission() {
         ActivityCompat.requestPermissions(this,new String[]{WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE,ACCESS_FINE_LOCATION
-                                                                    ,ACCESS_COARSE_LOCATION},PERMISSION_REQUEST_CODE);
+                ,ACCESS_COARSE_LOCATION},PERMISSION_REQUEST_CODE);
     }
     @Override
     public void onBackPressed() {
@@ -121,18 +156,18 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 
     public void onClick(View v){
 
-            switch (v.getId()) {
-                case R.id.register:
-                    startActivity(new Intent(this, RegisterUser.class));
-                    break;
-                case R.id.login:
-                    userLogin();
-                    break;
-                case R.id.forgotpassword:
-                    startActivity(new Intent(this, ForgotPassword.class));
-                    break;
-            }
+        switch (v.getId()) {
+            case R.id.register:
+                startActivity(new Intent(this, RegisterUser.class));
+                break;
+            case R.id.login:
+                userLogin();
+                break;
+            case R.id.forgotpassword:
+                startActivity(new Intent(this, ForgotPassword.class));
+                break;
         }
+    }
 
     private void userLogin() {
 
@@ -180,18 +215,18 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 
 
 
-            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        //redirect to home page
-                        loadingDialog.dismissDialog();
-                        startActivity(new Intent(MainActivity.this, HomePage.class));
-                    } else {
-                        Toast.makeText(MainActivity.this, "Failed to Login! Please check your email and password", Toast.LENGTH_LONG).show();
-                    }
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    //redirect to home page
+                    loadingDialog.dismissDialog();
+                    startActivity(new Intent(MainActivity.this, HomePage.class));
+                } else {
+                    Toast.makeText(MainActivity.this, "Failed to Login! Please check your email and password", Toast.LENGTH_LONG).show();
                 }
-            });
+            }
+        });
 
     }
 
