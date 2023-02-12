@@ -74,7 +74,7 @@ import dev.shreyaspatil.easyupipayment.exception.AppNotFoundException;
 import dev.shreyaspatil.easyupipayment.listener.PaymentStatusListener;
 import dev.shreyaspatil.easyupipayment.model.TransactionDetails;
 
-public class SlotBooking extends AppCompatActivity implements PaymentStatusListener , PaymentResultListener {
+public class SlotBooking extends AppCompatActivity implements PaymentStatusListener,PaymentResultListener {
     private Button btConfrom;
     public TextView tvFN,tvEM,tvArea,tvTime,tvLevel;
     public String area,time,fname,email,Level;
